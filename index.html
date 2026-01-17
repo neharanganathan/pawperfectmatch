@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pawperfect Match</title>
+  <style>
+    :root{
+      --bg1:#0b1220;
+      --bg2:#111a2e;
+      --card: rgba(255,255,255,0.08);
+      --card2: rgba(255,255,255,0.10);
+      --text:#eef2ff;
+      --muted: rgba(238,242,255,0.75);
+      <!doctype html>
+      <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>PAW PERFECT MATCH</title>
+        <style>
+          :root{ --accent:#7c3aed; --accent2:#22c55e; --text:#fff; }
+          html,body{ height:100%; margin:0; font-family:system-ui,Segoe UI,Roboto,Arial; }
+          .hero{
+            min-height:100vh;
+            display:grid;
+            place-items:center;
+            color:var(--text);
+            text-align:center;
+            background-image: url('StockCake-Puppies_playing_tug-1264308-standard.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            position:relative;
+          }
+          .overlay{ position:absolute; inset:0; background: linear-gradient(180deg, rgba(11,18,32,0.45), rgba(17,26,46,0.55)); }
+          .content{ position:relative; z-index:2; max-width:1100px; padding:28px; }
+          h1{ font-size:clamp(40px, 8vw, 112px); margin:0; margin-top:75px; letter-spacing:6px; font-weight:800; text-shadow:0 8px 32px rgba(2,6,23,0.65); }
+          p.lead{ margin-top:14px; color:rgba(255,255,255,0.88); font-size:18px; max-width:820px; margin-left:auto; margin-right:auto; text-shadow:0 4px 16px rgba(2,6,23,0.5); }
+          .ctaRow{ margin-top:22px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+          a.btn{ display:inline-block; padding:26px 44px; border-radius:12px; font-weight:800; text-decoration:none; color:#081226; font-size:20px; transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease; will-change: transform; }
+          a.primary{ background: linear-gradient(135deg, var(--accent), var(--accent2)); box-shadow:0 18px 60px rgba(0,0,0,0.45); }
+          a.btn.primary{ color: #ffffff; }
+          a.btn:hover{ transform: translateY(-6px) scale(1.03); }
+          a.primary:hover{ box-shadow: 0 28px 90px rgba(34,197,94,0.18); }
+          a.outline:hover{ background: rgba(255,255,255,0.10); transform: translateY(-6px) scale(1.03); }
+          a.btn:focus{ outline: 3px solid rgba(124,58,237,0.18); outline-offset:4px; }
+          a.outline{ background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:var(--text); }
+          .nav{ position:absolute; top:18px; left:18px; right:18px; display:flex; justify-content:flex-end; z-index:3; gap:12px; }
+          .nav a{ color:rgba(255,255,255,0.92); text-decoration:none; font-weight:700; padding:8px 12px; border-radius:10px; background:linear-gradient(90deg, rgba(0,0,0,0.18), transparent); }
+          .nav a.navLink, .nav a{ transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease; will-change: transform; }
+          .nav a.navLink:hover, .nav a:hover{ transform: translateY(-6px) scale(1.03); box-shadow:0 18px 60px rgba(0,0,0,0.16); }
+          @media (max-width:640px){ h1{ letter-spacing:2px; } .nav{ justify-content:center; } }
+          html{ scroll-behavior: smooth; }
+        </style>
+      </head>
+      <body>
+        <nav class="nav">
+          <a href="index.html" class="navLink">Home</a>
+          <a href="index.html#quiz" class="navLink">Quiz</a>
+          <a href="breeds.html" class="navLink">Breeds</a>
+          <a href="resources.html" class="navLink">Resources</a>
+          <a href="about.html" class="navLink">About</a>
+        </nav>
+
+        <main class="hero" role="main" aria-label="Paw Perfect Match homepage">
+          <div class="overlay" aria-hidden="true"></div>
+          <div class="content">
+            <h1>PAW PERFECT MATCH</h1>
+            <p class="lead" style="margin-top:220px;">Looking to adopt a dog, but not sure where to start? Pawperfect Match helps you find a dog that fits your lifestyle through a personalized quiz designed to match your activity level, space and preferences. Every dog deserves a loving home and every person deserves the right companion. Start your adoption journey and save a life today!</p>
+
+            <div class="ctaRow">
+                <a class="btn primary" href="#quiz">Take the Quiz</a>
+              </div>
+          </div>
+        </main>
+      </body>
+      </html>
+
+      <!-- In-page quiz target and UI -->
+      <style>
+        /* Compact quiz styles (keeps look consistent with site) */
+        /* Make the quiz area fill the viewport height and use full-width yellow background */
+        #quiz{ background:#fff9db; }
+        .quizWrap{ max-width:1100px; margin:0 auto; padding:32px 18px; display:flex; flex-direction:column; gap:18px; min-height:calc(100vh - 120px); }
+        @media (max-width:920px){ .quizWrap{ grid-template-columns:1fr } }
+        .sectionTitle{ display:flex; justify-content:space-between; align-items:center; gap:12px; }
+        .progressWrap{ display:flex; align-items:center; gap:12px; }
+        .progressBar{ width:160px; height:8px; background:rgba(255,255,255,0.06); border-radius:999px; overflow:hidden; }
+        .progressFill{ height:100%; width:0%; background:linear-gradient(90deg,var(--accent),var(--accent2)); transition:width 260ms ease; }
+        .qBox{ background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:14px; }
+        .options{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px }
+        @media (max-width:520px){ .options{ grid-template-columns:1fr } }
+        .optBtn{ border:1px solid rgba(255,255,255,0.10); background:transparent; color:var(--text); padding:12px; border-radius:12px; text-align:left; cursor:pointer; display:flex; gap:12px; align-items:center }
+        .optBtn .emoji{ font-size:20px }
+        .optBtn.selected{ border-color:rgba(124,58,237,0.6); background:linear-gradient(180deg, rgba(124,58,237,0.06), rgba(34,197,94,0.04)); box-shadow:0 10px 30px rgba(2,6,23,0.25) }
+        .actions{ display:flex; gap:10px; justify-content:flex-end; margin-top:12px }
+        .primary{ background: linear-gradient(135deg, var(--accent), var(--accent2)); color:#fff; border:none; padding:10px 14px; border-radius:10px }
+        .ghost{ background:transparent; border:1px solid rgba(255,255,255,0.08); color:var(--text); padding:8px 12px; border-radius:10px }
+        .pillRow{ display:flex; gap:8px; margin-top:8px; flex-wrap:wrap }
+        .pill{ background:rgba(255,255,255,0.04); padding:8px 10px; border-radius:999px; font-size:13px }
+        .resultHero{ display:flex; gap:12px; align-items:center }
+        .badge{ width:56px; height:56px; border-radius:12px; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:grid; place-items:center; font-size:26px }
+        .miniList{ display:grid; gap:10px; margin-top:10px }
+        .miniItem{ display:flex; justify-content:space-between; gap:12px; padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.04); background:rgba(255,255,255,0.02) }
+
+        /* Light-yellow quiz theme overrides for better contrast and formatting */
+        /* Use the yellow background for the whole quiz area; remove white inner card look */
+        #quiz .card[aria-label="Lifestyle quiz"]{ background:transparent; color:#111827; border:none; box-shadow:none; padding:0 }
+        /* Make the quiz container fill available height and center content */
+        #quiz > .quizWrap > section[aria-label="Lifestyle quiz"]{ flex:1; display:flex; flex-direction:column; justify-content:center; padding:28px 32px }
+        #quiz .card[aria-label="Lifestyle quiz"] .qBox{ background:transparent; border:none; color:#111827; padding:0 }
+        #quiz .card[aria-label="Lifestyle quiz"] .sectionTitle h2{ color:#111827 }
+        #quiz .progressBar{ background:rgba(17,24,39,0.06) }
+        #quiz .progressFill{ background:linear-gradient(90deg,#f59e0b,#fbbf24) }
+        /* Option buttons subtle contrast on yellow background */
+        #quiz .optBtn{ background:rgba(17,24,39,0.03); color:#111827; border:1px solid rgba(17,24,39,0.06) }
+        #quiz .optBtn, #quiz .primary, #quiz .ghost{ transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease; will-change: transform; }
+
+        /* Hover effects matching the hero CTA */
+        #quiz .optBtn:hover{ transform: translateY(-6px) scale(1.03); box-shadow:0 12px 30px rgba(2,6,23,0.06); }
+        #quiz .primary:hover{ transform: translateY(-6px) scale(1.03); box-shadow: 0 28px 90px rgba(34,197,94,0.18); }
+        #quiz .ghost:hover{ transform: translateY(-6px) scale(1.03); background: rgba(17,24,39,0.06); }
+
+        /* (sticky actions reverted) */
+        #quiz .actions{ margin-top:20px }
+        #quiz .optBtn .optText b{ color:#111827 }
+        #quiz .optBtn.selected{ background:linear-gradient(180deg,#fff3b0,#fff7d2); border-color:#f7e08a; box-shadow:0 8px 20px rgba(17,24,39,0.06) }
+        #quiz .primary{ background: linear-gradient(135deg, var(--accent), var(--accent2)); color:#fff }
+        #quiz .ghost{ border-color: rgba(17,24,39,0.08); color:#111827; background:transparent }
+        #quiz .pill{ background: rgba(17,24,39,0.04); color:#111827 }
+        #quiz .resultHero{ color:#111827 }
+        #quiz .badge{ box-shadow:none; background:linear-gradient(135deg,#ffd66b,#ffb84d); color:#111827 }
+        #quiz .miniItem{ background:#fff0f6; border-color:rgba(17,24,39,0.06); color:#111827 }
+        #matchCard .miniItem{ background:#fff0f6; border-color:rgba(17,24,39,0.06); color:#111827 }
+
+        /* Larger typography and spacing for immersive quiz */
+        #quiz{ font-size:18px; }
+        #quiz .sectionTitle h2{ font-size:clamp(28px,6vw,44px); line-height:1.05 }
+        #quiz #progressText{ font-size:18px; font-weight:700 }
+        #quiz .qText{ font-size:clamp(20px,4.5vw,40px); font-weight:800; margin:8px 0 6px }
+        #quiz .qHint{ font-size:16px; color:rgba(17,24,39,0.7); margin-bottom:12px }
+        #quiz .optBtn{ padding:18px 16px; border-radius:14px; align-items:center }
+        #quiz .optBtn .emoji{ font-size:36px }
+        #quiz .optBtn .optText b{ font-size:20px }
+        #quiz .optBtn .optText small{ font-size:15px }
+        #quiz .actions{ margin-top:20px }
+        #quiz .primary, #quiz .ghost{ font-size:16px; padding:12px 18px }
+        #quiz .badge{ width:80px; height:80px; font-size:40px }
+        #quiz .resultHero h3{ font-size:24px }
+        #quiz .pill{ font-size:15px; padding:10px 12px }
+        /* Prominent match heading for the result area */
+        #resultArea .matchHeading{ display:block; text-align:center; font-size:40px; font-weight:900; background:#fffbeb; color:#92400e; padding:12px 16px; border-radius:10px; margin-bottom:12px }
+        #resultArea img.matchImage{ width:700px; height:500px; object-fit:cover; border-radius:12px; border:1px solid rgba(0,0,0,0.06) }
+        @media (max-width:720px){ #resultArea .matchHeading{ font-size:20px } #resultArea img.matchImage{ width:100%; height:auto; max-height:400px } }
+      </style>
+
+      <div id="quiz">
+        <div class="quizWrap">
+          <section class="card pad" aria-label="Lifestyle quiz" style="padding:28px;">
+            <div class="sectionTitle">
+              <h2 style="margin:0">Quiz</h2>
+              <div class="progressWrap" aria-label="Progress">
+                <span id="progressText">0 / 8</span>
+                <div class="progressBar" aria-hidden="true">
+                  <div class="progressFill" id="progressFill"></div>
+                </div>
+              </div>
+            </div>
+
+            <div id="questionHost"></div>
+
+            <div class="actions">
+              <button class="ghost" id="backBtn">Back</button>
+              <button class="primary" id="nextBtn" disabled style="display:none;">Next</button>
+              <button class="ghost" id="restartBtn" title="Start over">Restart</button>
+            </div>
+
+            <p class="footerNote" style="margin-top:12px">Note: This is a match suggestion, not a guarantee. Always meet the dog and consult shelter staff.</p>
+          </section>
+
+        </div>
+      </div>
+
+      <!-- Match card: placed below the quiz so we can scroll to it after completion -->
+      <section class="card pad" aria-label="Your match" id="matchCard" style="margin:0;padding:32px 18px;background:#ffe4f0;">
+        <div class="sectionTitle">
+          <h2 style="margin:0;font-size:24px">Your PawPerfect Match!</h2>
+          <span class="chip" id="statusChip">Complete the quiz</span>
+        </div>
+
+        <div id="resultArea">
+        </div>
+      </section>
+
+      <section class="card pad" aria-label="Nearby shelters" style="background:#ffe4f0;margin:0;padding:32px 18px;">
+        <div class="sectionTitle">
+          <h2>Nearby Adoption Options</h2>
+        </div>
+
+        <p class="subtitle" style="margin-top:0">
+          You can allow location to sort shelters by distance, or type your city/postal code to open a shelter search.
+        </p>
+
+        <div class="shelterControls">
+          <button class="primary" id="locBtn" style="color:#000;">Use my location</button>
+
+          <div class="input" title="Enter a city or postal/zip code">
+            <span aria-hidden="true">🔎</span>
+            <input id="placeInput" placeholder="City or postal/zip" />
+          </div>
+
+          <button class="ghost" id="searchSheltersBtn" style="color:#000;">Search</button>
+        </div>
+
+        <div class="miniList" id="shelterList"></div>
+      </section>
+    </aside>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    /*
+      Pawperfect Match
+      Single-file project (HTML/CSS/JS).
+      Beginner-friendly notes:
+      - The quiz is an array of question objects.
+      - Each answer adds points to categories (energy, space, shedding, etc.).
+      - After the last question, we score dog profiles and pick the best.
+      - Shelters are a small offline list + optional geolocation sorting.
+    */
+
+    // ---------------------------
+    // 1) QUIZ DATA
+    // ---------------------------
+    const quiz = [
+      {
+        id: "activity",
+        question: "How active are you on a normal week?",
+        hint: "This helps us match energy level and exercise needs.",
+        options: [
+          { label: "Very active", desc: "I exercise a lot and love being outdoors", emoji:"🏃", points: { energy: 3 } },
+          { label: "Moderately active", desc: "Walks and some activities", emoji:"🚶", points: { energy: 2 } },
+          { label: "Not very active", desc: "Short walks, chill lifestyle", emoji:"🛋️", points: { energy: 1 } },
+          { label: "It depends", desc: "Some weeks busy, some weeks free", emoji:"📅", points: { energy: 2 } },
+        ]
+      },
+      {
+        id: "home",
+        question: "What’s your living space like?",
+        hint: "Some dogs do best with more space, others are great in apartments.",
+        options: [
+          { label: "Apartment / small space", desc: "Limited indoor space", emoji:"🏢", points: { space: 1 } },
+          { label: "Medium home", desc: "Some room to move around", emoji:"🏠", points: { space: 2 } },
+          { label: "Large home", desc: "Plenty of room", emoji:"🏡", points: { space: 3 } },
+          { label: "Home with a large yard", desc: "Outdoor space available", emoji:"🌿", points: { space: 3 } },
+        ]
+      },
+      {
+        id: "time",
+        question: "How much time can you give a dog each day?",
+        hint: "Training, walks, and attention matter a lot.",
+        options: [
+          { label: "Lots of time", desc: "2+ hours for walks/training/play", emoji:"⏳", points: { time: 3 } },
+          { label: "Some time", desc: "About 1–2 hours", emoji:"🕐", points: { time: 2 } },
+          { label: "Limited time", desc: "Less than an hour most days", emoji:"⚡", points: { time: 1 } },
+          { label: "Varies", desc: "My schedule changes", emoji:"🔁", points: { time: 2 } },
+        ]
+      },
+      {
+        id: "training",
+        question: "How do you feel about training and routines?",
+        hint: "Some breeds are easier for beginners; others need consistent training.",
+        options: [
+          { label: "I enjoy training", desc: "I’m patient and consistent", emoji:"🎯", points: { train: 3 } },
+          { label: "I can do basics", desc: "Sit, stay, leash training", emoji:"✅", points: { train: 2 } },
+          { label: "I’m a beginner", desc: "I want a dog that’s easier to manage", emoji:"🌱", points: { train: 1 } },
+          { label: "I’ll get help", desc: "Classes or trainer are fine", emoji:"🧑‍🏫", points: { train: 2 } },
+        ]
+      },
+      {
+        id: "grooming",
+        question: "What grooming level are you okay with?",
+        hint: "Some dogs shed a lot or need regular brushing/haircuts.",
+        options: [
+          { label: "Low grooming", desc: "Minimal shedding and brushing", emoji:"🧼", points: { groom: 1 } },
+          { label: "Moderate", desc: "Weekly brushing is fine", emoji:"🪮", points: { groom: 2 } },
+          { label: "High", desc: "I’m okay with frequent grooming", emoji:"✂️", points: { groom: 3 } },
+          { label: "No preference", desc: "I can manage whatever", emoji:"🙂", points: { groom: 2 } },
+        ]
+      },
+      {
+        id: "kids",
+        question: "Any kids (or lots of visiting family) at home?",
+        hint: "This helps match temperament and patience.",
+        options: [
+          { label: "Yes, younger kids", desc: "Need gentle and patient", emoji:"🧸", points: { gentle: 3 } },
+          { label: "Yes, older kids", desc: "Some energy is fine", emoji:"🎒", points: { gentle: 2 } },
+          { label: "No kids", desc: "Adult household", emoji:"🧑‍💻", points: { gentle: 1 } },
+          { label: "Sometimes", desc: "Kids visit sometimes", emoji:"👋", points: { gentle: 2 } },
+        ]
+      },
+      {
+        id: "otherPets",
+        question: "Do you have other pets?",
+        hint: "Some dogs are more social with animals than others.",
+        options: [
+          { label: "Yes, a dog", desc: "Needs to be dog-friendly", emoji:"🐶", points: { social: 3 } },
+          { label: "Yes, a cat", desc: "Needs calmer prey drive", emoji:"🐱", points: { social: 2 } },
+          { label: "Yes, small pets", desc: "Careful match needed", emoji:"🐹", points: { social: 1 } },
+          { label: "No other pets", desc: "This will be the only pet", emoji:"⭐", points: { social: 2 } },
+        ]
+      },
+      {
+        id: "size",
+        question: "Which dog size do you prefer?",
+        hint: "This is an important preference and will prioritize matching dogs of the chosen size.",
+        options: [
+          { label: "Small (toy/small)", desc: "Prefer small companion dogs", emoji:"🧸", points: { space: 1 } },
+          { label: "Medium (mid-size)", desc: "Prefer medium-sized dogs", emoji:"🐕", points: { space: 2 } },
+          { label: "Large (big dogs)", desc: "Prefer large, roomy dogs", emoji:"🐺", points: { space: 3 } },
+          { label: "No preference", desc: "I have no size preference", emoji:"⭐", points: { } },
+        ]
+      },
+      {
+        id: "vibe",
+        question: "Pick your ideal dog vibe.",
+        hint: "This helps tune temperament and energy style.",
+        options: [
+          { label: "Adventure buddy", desc: "Hikes, runs, exploring", emoji:"🗺️", points: { energy: 3, time: 3 } },
+          { label: "Balanced bestie", desc: "Play + relax", emoji:"⚖️", points: { energy: 2, gentle: 2 } },
+          { label: "Cuddle champion", desc: "Calm, cozy companion", emoji:"🧡", points: { energy: 1, gentle: 3 } },
+          { label: "Smart & focused", desc: "Learns tricks and tasks", emoji:"🧠", points: { train: 3 } },
+        ]
+      },
+      {
+        id: "shedding",
+        question: "How do you feel about shedding?",
+        hint: "Some dogs shed heavily, others barely at all.",
+        options: [
+          { label: "No shedding", desc: "Must be low or no-shed breeds", emoji:"✨", points: {} },
+          { label: "Little shedding", desc: "Minimal shedding is preferred", emoji:"🪶", points: {} },
+          { label: "Fine with shedding", desc: "I can handle regular shedding", emoji:"🧹", points: {} },
+          { label: "No preference", desc: "Shedding doesn't matter to me", emoji:"⭐", points: {} },
+        ]
+      }
+    ];
+
+    // ---------------------------
+    // 2) DOG PROFILES (SCORING)
+    // ---------------------------
+    // Each profile has "ideal" levels (1–3). We score by closeness.
+    const dogProfiles = [
+      {
+        key: "cavalier",
+        name: "Cavalier King Charles Spaniel (or similar mix)",
+        icon: "👑",
+        description: "Affectionate, gentle, and great for calmer households. Often a strong match for people who want a cozy companion and manageable exercise needs.",
+        ideal: { energy: 1, space: 1, time: 2, train: 2, groom: 2, gentle: 3, social: 2 },
+        shedding: 2,
+        tags: ["Sweet-tempered", "Great lap dog", "Moderate grooming"],
+        tips: ["Daily walks still matter", "Brush regularly", "Good for apartments with walks"]
+      },
+      {
+        key: "lab",
+        name: "Labrador Retriever (or similar mix)",
+        icon: "🎾",
+        description: "Friendly, social, and active. A classic family dog that loves play and needs daily exercise and attention.",
+        ideal: { energy: 3, space: 2, time: 3, train: 2, groom: 2, gentle: 3, social: 3 },
+        shedding: 2,
+        tags: ["Playful", "People-friendly", "Needs exercise"],
+        tips: ["Use training + routines", "Great for active families", "Expect shedding"]
+      },
+      {
+        key: "golden",
+        name: "Golden Retriever",
+        icon: "🌟",
+        description: "Friendly, patient, and great with families. Needs regular exercise and thrives on interaction and training.",
+        ideal: { energy: 3, space: 2, time: 3, train: 2, groom: 2, gentle: 3, social: 3 },
+        shedding: 2,
+        tags: ["Family-friendly", "Eager to please", "Active"],
+        tips: ["Daily exercise and training", "Good with kids", "Expect moderate shedding"]
+      },
+      {
+        key: "shepherd",
+        name: "German Shepherd / Working-dog mix",
+        icon: "🛡️",
+        description: "Loyal, intelligent, and needs structure. Best for people ready for training, routines, and daily mental + physical activity.",
+        ideal: { energy: 3, space: 3, time: 3, train: 3, groom: 2, gentle: 2, social: 2 },
+        shedding: 2,
+        tags: ["Highly trainable", "Protective", "Needs a job"],
+        tips: ["Consistent training and mental work", "Daily exercise required", "Great for active owners"]
+      },
+      {
+        key: "french_bulldog",
+        name: "French Bulldog",
+        icon: "😌",
+        description: "Low-to-moderate energy, very people-focused, and often well-suited to apartment life; watch for heat and breathing issues.",
+        ideal: { energy: 1, space: 1, time: 2, train: 1, groom: 1, gentle: 2, social: 2 },
+        shedding: 2,
+        tags: ["Chill", "Apartment-friendly", "Low exercise"],
+        tips: ["Short daily walks", "Avoid extreme heat", "Basic training and socialization help"]
+      },
+      {
+        key: "bulldog",
+        name: "English Bulldog / Bulldog-type",
+        icon: "🐾",
+        description: "Calm, affectionate, and good for smaller spaces; health considerations and moderate care are common.",
+        ideal: { energy: 1, space: 1, time: 2, train: 1, groom: 1, gentle: 2, social: 2 },
+        shedding: 2,
+        tags: ["Calm", "Low exercise", "Affectionate"],
+        tips: ["Short walks and care for folds", "Monitor breathing and heat", "Gentle training"]
+      },
+      {
+        key: "poodle",
+        name: "Poodle / Doodle-type (or similar low-shedding mix)",
+        icon: "🫧",
+        description: "Very smart and trainable, often lower shedding. Needs mental stimulation and consistent training.",
+        ideal: { energy: 2, space: 2, time: 2, train: 3, groom: 3, gentle: 2, social: 2 },
+        shedding: 3,
+        tags: ["Smart", "Often low shedding", "High grooming"],
+        tips: ["Regular grooming/haircuts", "Puzzle toys help", "Great for learning tricks"]
+      },
+      {
+        key: "beagle",
+        name: "Beagle",
+        icon: "🦴",
+        description: "Curious, scent-driven, and friendly. Beagles need stimulation and secure outdoor spaces due to tracking instincts.",
+        ideal: { energy: 2, space: 2, time: 2, train: 2, groom: 1, gentle: 2, social: 3 },
+        shedding: 2,
+        tags: ["Scent-driven", "Friendly", "Vocal"],
+        tips: ["Secure yard recommended", "Positive training for scent distractions", "Daily exercise to prevent boredom"]
+      },
+      {
+        key: "rottweiler",
+        name: "Rottweiler",
+        icon: "🛡️",
+        description: "Confident and loyal; needs consistent training, socialization, and an owner who provides structure.",
+        ideal: { energy: 2, space: 3, time: 3, train: 3, groom: 1, gentle: 2, social: 2 },
+        shedding: 2,
+        tags: ["Protective", "Strong", "Loyal"],
+        tips: ["Early socialization", "Consistent training and leadership", "Good for experienced owners"]
+      },
+      {
+        key: "yorkie",
+        name: "Yorkshire Terrier",
+        icon: "🎀",
+        description: "Small, lively, and affectionate. Yorkies need grooming and gentle training but fit well in small homes.",
+        ideal: { energy: 2, space: 1, time: 2, train: 1, groom: 3, gentle: 2, social: 2 },
+        shedding: 3,
+        tags: ["Tiny", "Bold", "High grooming"],
+        tips: ["Daily brushing needed", "Professional grooming every 4-6 weeks", "Small dog training"]
+      },
+      {
+        key: "dachshund",
+        name: "Dachshund",
+        icon: "🪶",
+        description: "Curious and bold with a strong prey drive in some lines; good for smaller spaces but watch back health.",
+        ideal: { energy: 2, space: 1, time: 2, train: 1, groom: 1, gentle: 2, social: 2 },
+        shedding: 2,
+        tags: ["Stubborn", "Playful", "Back-care needed"],
+        tips: ["Avoid high jumps", "Manage weight and back health", "Short daily walks"]
+      },
+      {
+        key: "boxer",
+        name: "Boxer",
+        icon: "🥊",
+        description: "Playful, energetic, and affectionate. Boxers need activity, structure, and are great with families when trained.",
+        ideal: { energy: 3, space: 3, time: 3, train: 2, groom: 1, gentle: 2, social: 3 },
+        shedding: 2,
+        tags: ["Energetic", "Family-friendly", "Playful"],
+        tips: ["Daily vigorous play", "Consistent training", "Great with active families"]
+      },
+      {
+        key: "pug",
+        name: "Pug",
+        icon: "😮",
+        description: "Friendly, affectionate, and a good apartment companion; watch for breathing and weight issues.",
+        ideal: { energy: 1, space: 1, time: 2, train: 1, groom: 1, gentle: 3, social: 3 },
+        shedding: 2,
+        tags: ["Affectionate", "Low exercise", "Brachycephalic"],
+        tips: ["Short walks", "Weight management", "Avoid heat and strenuous exercise"]
+      },
+      {
+        key: "shihtzu",
+        name: "Shih Tzu",
+        icon: "🧸",
+        description: "Companion-focused, calm, and needs regular grooming; good for lap-loving owners.",
+        ideal: { energy: 1, space: 1, time: 2, train: 1, groom: 3, gentle: 3, social: 2 },
+        shedding: 3,
+        tags: ["Companion", "Grooming", "Calm"],
+        tips: ["Regular grooming", "Gentle training", "Great for apartment life"]
+      },
+      {
+        key: "chihuahua",
+        name: "Chihuahua",
+        icon: "🌶️",
+        description: "Very small and bold; often forms a strong bond with owners. Good for small spaces but needs confident handling.",
+        ideal: { energy: 2, space: 1, time: 1, train: 1, groom: 1, gentle: 1, social: 1 },
+        shedding: 2,
+        tags: ["Tiny", "Loyal", "Alert"],
+        tips: ["Careful socialization", "Small-dog training", "Watch for fragile handling"]
+      },
+      {
+        key: "pomeranian",
+        name: "Pomeranian",
+        icon: "❄️",
+        description: "Small, fluffy, and lively. Pomeranians need grooming and engagement despite their size.",
+        ideal: { energy: 2, space: 1, time: 2, train: 1, groom: 3, gentle: 2, social: 2 },
+        shedding: 2,
+        tags: ["Fluffy", "Alert", "Grooming"],
+        tips: ["Regular brushing", "Small-dog socialization", "Short daily walks"]
+      },
+      {
+        key: "husky",
+        name: "Siberian Husky",
+        icon: "❄️",
+        description: "High-energy, sociable, and escape-prone; needs exercise, secure fencing, and an owner prepared for active routines.",
+        ideal: { energy: 3, space: 3, time: 3, train: 2, groom: 3, gentle: 2, social: 3 },
+        shedding: 1,
+        tags: ["High-energy", "Independent", "Shedding"],
+        tips: ["Secure yard", "Daily vigorous exercise", "Grooming during blowouts"]
+      },
+      {
+        key: "greatdane",
+        name: "Great Dane",
+        icon: "🏰",
+        description: "Gentle giant: low-to-moderate energy but needs space due to size. Good for owners who can handle large dogs and provide joint-care attention.",
+        ideal: { energy: 2, space: 3, time: 2, train: 2, groom: 1, gentle: 2, social: 2 },
+        shedding: 2,
+        tags: ["Large", "Gentle", "Shorter lifespan"],
+        tips: ["Space for size", "Manage joints and weight", "Short daily walks"]
+      },
+      {
+        key: "doberman",
+        name: "Doberman Pinscher",
+        icon: "🦁",
+        description: "Loyal, alert, and highly trainable; best for experienced owners who provide leadership, training, and exercise.",
+        ideal: { energy: 3, space: 3, time: 3, train: 3, groom: 1, gentle: 2, social: 2 },
+        shedding: 2,
+        tags: ["Protective", "Trainable", "Energetic"],
+        tips: ["Structured training", "Daily exercise and mental work", "Good for active owners"]
+      },
+      {
+        key: "aussie",
+        name: "Australian Shepherd",
+        icon: "🐑",
+        description: "Highly active, intelligent, and needs mental/work outlets; excels in active homes with training and job-like tasks.",
+        ideal: { energy: 3, space: 3, time: 3, train: 3, groom: 2, gentle: 2, social: 2 },
+        shedding: 2,
+        tags: ["Herding", "Very active", "Needs work"],
+        tips: ["Obedience and agility", "Daily mental stimulation", "Great for active households"]
+      },
+      {
+        key: "maltese",
+        name: "Maltese",
+        icon: "🌸",
+        description: "Small companion breed, affectionate and low-energy but needs regular grooming and gentle handling.",
+        ideal: { energy: 1, space: 1, time: 1, train: 1, groom: 3, gentle: 3, social: 2 },
+        shedding: 3,
+        tags: ["Companion", "Grooming", "Small"],
+        tips: ["Frequent grooming", "Gentle training", "Great lap dog"]
+      },
+      {
+        key: "shiba",
+        name: "Shiba Inu",
+        icon: "🗻",
+        description: "Independent, clean, and sometimes aloof; requires confident, consistent training and secure outdoor areas.",
+        ideal: { energy: 2, space: 2, time: 2, train: 2, groom: 2, gentle: 1, social: 1 },
+        shedding: 2,
+        tags: ["Independent", "Cat-like", "Escape artist"],
+        tips: ["Firm, consistent training", "Secure yard", "Socialization from young age"]
+      },
+      {
+        key: "corgi",
+        name: "Corgi (Pembroke/Cardigan)",
+        icon: "👑",
+        description: "Smart, herding background, and energetic for their size; they enjoy activity and mental games.",
+        ideal: { energy: 2, space: 2, time: 2, train: 2, groom: 2, gentle: 2, social: 2 },
+        shedding: 2,
+        tags: ["Herding", "Smart", "Stubborn"],
+        tips: ["Daily walks", "Mental games", "Watch for back/weight issues"]
+      },
+      {
+        key: "border_collie",
+        name: "Border Collie",
+        icon: "🧠",
+        description: "Extremely intelligent and high-energy; excels with work, agility, and owners who can provide intense mental and physical outlets.",
+        ideal: { energy: 3, space: 3, time: 3, train: 3, groom: 2, gentle: 2, social: 2 },
+        shedding: 2,
+        tags: ["Very high energy", "Brainy", "Needs work"],
+        tips: ["Agility/obedience training", "Daily intense exercise", "Not ideal for inactive owners"]
+      }
+    ];
+
+    // ---------------------------
+    // 3) SHELTER DATA (OFFLINE LIST)
+    // ---------------------------
+    // You can replace these with shelters near your city for your project.
+    const shelters = [
+      { name: "Happy Tails Animal Shelter", city: "Downtown", lat: 43.6532, lon: -79.3832, phone: "(555) 123-4567" },
+      { name: "Northside Rescue Center", city: "North Area", lat: 43.7615, lon: -79.4111, phone: "(555) 222-0199" },
+      { name: "Lakeshore Adoption Hub", city: "Lakeshore", lat: 43.6405, lon: -79.4000, phone: "(555) 987-0001" },
+      { name: "Paws & Care Society", city: "East End", lat: 43.6700, lon: -79.3200, phone: "(555) 333-1212" },
+      { name: "Second Chance Dog Rescue", city: "West End", lat: 43.6500, lon: -79.5200, phone: "(555) 777-8080" },
+    ];
+
+    // Available dogs at shelters
+    const availableDogs = [
+      { id: 1, name: "Buddy", breedKey: "lab", breedLabel: "Labrador mix", age: "2 yrs", shelterIdx: 0, img: "https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=2c5f3d4f3b6d4f6a8f0f1e6d2b1a7c9e" },
+      { id: 2, name: "Maya", breedKey: "poodle", breedLabel: "Poodle mix", age: "3 yrs", shelterIdx: 2, img: "https://images.unsplash.com/photo-1546182990-dffeafbe841d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1b4c6a8b2a5e4f0b3d2c1a6e8f7b9c0d" },
+      { id: 3, name: "Charlie", breedKey: "greyhound", breedLabel: "Greyhound mix", age: "4 yrs", shelterIdx: 3, img: "https://images.unsplash.com/photo-1507149833265-60c372daea22?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=7a4d3c6e9b1a2c8d5e6f7a8b9c0d1e2f" },
+    ];
+
+    // Map of custom local images for specific breeds; prefer these over Unsplash
+    const customBreedImages = {
+      chihuahua: 'chihuahua.jpg',
+      cavalier: 'https://pethelpful.com/.image/w_1080,q_auto:good,c_limit/MTk0OTAxODYyMDkxNDY1ODkw/5-things-you-should-know-before-owning-a-cavalier-king-charles-spaniel.jpg?arena_f_auto',
+      golden: 'https://www.thesprucepets.com/thmb/kCP2nrYde0lxY1vKcyDoWTQnZ54=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/27579211_1592220587499910_4895961142016344064_n-5b353a8dc9e77c003795239d.jpg',
+      lab: 'https://www.dailypaws.com/thmb/rwL54b2y1kllOZLhfppcfbkrmaU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/golden-lab-puppy-664540826-2000-b29bcc58c71a498eb5ecd5d0b2b8e82b.jpg',
+      shepherd: 'https://newapproach.ca/wp-content/uploads/2021/09/shepherd-dog-puppy-dog-4357790-1024x685.jpg',
+      beagle: 'https://dogtime.com/wp-content/uploads/sites/12/2023/07/GettyImages-936521948-e1690235595257.jpg?w=1024',
+      french_bulldog: 'https://media.cnn.com/api/v1/images/stellar/prod/230315104543-02-french-bulldog-stock.jpg?c=16x9&q=h_653,w_1160,c_fill/f_avif',
+      bulldog: 'https://i1.pickpik.com/photos/94/974/364/bulldog-cute-easter-animal-preview.jpg',
+      poodle: 'https://thehappypuppysite.com/wp-content/uploads/2018/01/Toy-Poodle-HP-long.jpg',
+      rottweiler: 'https://animalfair.com/wp-content/uploads/2016/07/Screen-Shot-2016-07-18-at-12.34.21-PM.png',
+      yorkshire_terrier: 'https://www.animalbehaviorcollege.com/wp-content/uploads/2015/07/yorkshire-terrier.jpg',
+      yorkie: 'https://a-z-animals.com/media/2022/05/yorkie2.jpg',
+      dachshund: 'https://pethelpful.com/.image/w_1080,q_auto:good,c_limit/NDowMDAwMDAwMDAwMTI0NzA3/cute-dachshund-puppies.jpg?arena_f_auto',
+      boxer: 'https://s.yimg.com/ny/api/res/1.2/b_bHBLXvluXN1_3mXdXqBw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNg--/https://media.zenfs.com/en/dog_time_927/40d21c1f8b20923ed065d4e09da82d2c',
+      pug: 'https://cdn05.zipify.com/YbsM3chL8S78YP9YMpIiYAvmiNA=/fit-in/3840x0/020853f9b4d74310a51e3174c8e3db45/pot013-blog-hero-horizontal-1.jpeg',
+      shihtzu: 'https://www.animalkingdomaz.com/wp-content/uploads/Shih-Tzu-2-300x300.jpg',
+      pomeranian: 'https://www.rover.com/blog/wp-content/uploads/iStock-1422682177-1024x683.jpg',
+      husky: 'https://t4.ftcdn.net/jpg/06/27/80/93/360_F_627809340_QUwyhZUUSBuVoiSpRjLGOuFSguJQ1CdY.jpg',
+      great_dane: 'https://www.scotsman.com/webimg/b25lY21zOjZlZTMwMGRkLWNiZDItNGVkMy05YTEzLTNiNTQ3NDYyMjQ1ZDphYjNhOTI5NC0zZGNmLTRmN2MtOWNkYy0zMGMzMjMzZDlmZTA=.jpg?crop=3:2,smart&trim=&width=990&quality=65&enable=upscale',
+      doberman: 'https://images.ctfassets.net/nx3pzsky0bc9/5JNIP0KkbMkF8sjyeVFcvt/d2db4e388b752e69935a6001b0259efa/Doberman_feature_image.png?q=65&w=804&fm=avif',
+      border_collie: 'https://dogtime.com/wp-content/uploads/sites/12/2023/11/E1A4DAF1-4BF1-43F1-B23F-D6C7215FEBC5-e1700655081549.jpeg?w=1024',
+      maltese: 'https://images.ctfassets.net/5gwznsevsdag/26aZgpxRz5JQmHkMn8W3vl/95e9eae3ab1b3aca41efce1f645c0dd0/BLOG_BREED_IMAGES_MALTESE_1255b1c5-b936-4700-97de-048fc8e2fb78.jpg?fm=avif&q=40&w=750&h=750&fit=fill',
+      bullmastiff: 'https://www.petpaw.com.au/wp-content/uploads/2014/04/Bullmastiff-3.jpg',
+      corgi: 'https://www.petplace.com/article/dogs/just-for-fun/media_14f0c12d2db85798062879451e9f3132f2a54925a.jpeg?width=2000&format=webply&optimize=medium',
+      shiba: 'https://cdn.shopify.com/s/files/1/1083/2612/files/shutterstock_1853181622_480x480.jpg?v=1707885098'
+    };
+
+    // Last scored profiles (used to show matching available dogs)
+    let lastScored = null;
+
+    // ---------------------------
+    // 4) STATE
+    // ---------------------------
+    let step = 0;
+    const answers = new Array(quiz.length).fill(null);
+    let userScores = null;  // computed after completion
+    let userLocation = null; // {lat, lon}
+
+    // ---------------------------
+    // 5) DOM HELPERS
+    // ---------------------------
+    const host = document.getElementById("questionHost");
+    const backBtn = document.getElementById("backBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const restartBtn = document.getElementById("restartBtn");
+    const progressText = document.getElementById("progressText");
+    const progressFill = document.getElementById("progressFill");
+    const statusChip = document.getElementById("statusChip");
+    const resultArea = document.getElementById("resultArea");
+    const shelterList = document.getElementById("shelterList");
+    const locBtn = document.getElementById("locBtn");
+    const placeInput = document.getElementById("placeInput");
+    const searchSheltersBtn = document.getElementById("searchSheltersBtn");
+    const toast = document.getElementById("toast");
+
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(()=> toast.classList.remove("show"), 2400);
+    }
+
+    // ---------------------------
+    // 6) QUIZ RENDER
+    // ---------------------------
+    function renderQuestion(){
+      const q = quiz[step];
+      const picked = answers[step];
+
+      progressText.textContent = `${step} / ${quiz.length}`;
+      progressFill.style.width = `${(step / quiz.length) * 100}%`;
+
+      host.innerHTML = `
+        <div class="qBox">
+          <div class="qTop">
+            <div style="flex:1; min-width:0;">
+              <p class="qText">${q.question}</p>
+              <p class="qHint">${q.hint}</p>
+            </div>
+            <div class="qNum">Question ${step + 1} of ${quiz.length}</div>
+          </div>
+
+          <div class="options" role="group" aria-label="Answer choices">
+            ${q.options.map((opt, idx) => `
+              <button class="optBtn ${picked===idx ? "selected":""}" data-idx="${idx}">
+                <div class="emoji" aria-hidden="true">${opt.emoji}</div>
+                <div class="optText">
+                  <b>${opt.label}</b>
+                  <small>${opt.desc}</small>
+                </div>
+              </button>
+            `).join("")}
+          </div>
+        </div>
+      `;
+
+      nextBtn.disabled = (picked === null);
+      backBtn.disabled = (step === 0);
+
+      // Add listeners to options
+      host.querySelectorAll(".optBtn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const idx = Number(btn.getAttribute("data-idx"));
+          answers[step] = idx;
+          renderQuestion(); // re-render so selection highlights
+
+          // Automatically submit this answer and advance to the next question
+          // (keeps the explicit Next button available as well)
+          setTimeout(() => {
+            if (nextBtn && !nextBtn.disabled) nextBtn.click();
+          }, 260);
+        });
+      });
+
+      // Next button label changes on last step
+      nextBtn.textContent = (step === quiz.length - 1) ? "Finish" : "Next";
+    }
+
+    // ---------------------------
+    // 7) SCORING
+    // ---------------------------
+    function computeUserScores(){
+      const totals = { energy:0, space:0, time:0, train:0, groom:0, gentle:0, social:0 };
+      for (let i = 0; i < quiz.length; i++){
+        const pickedIdx = answers[i];
+        const opt = quiz[i].options[pickedIdx];
+        for (const k in opt.points){
+          totals[k] += opt.points[k];
+        }
+      }
+
+      // Convert totals to 1..3 scale (simple normalization)
+      // Each category roughly ranges 1..3 per question, but not all questions touch all categories.
+      // We'll clamp into 1..3 for matching.
+      const scaled = {};
+      for (const k in totals){
+        const v = totals[k];
+        // Map:
+        // 0-2 => 1, 3-5 => 2, 6+ => 3 (simple)
+        let s = 1;
+        if (v >= 6) s = 3;
+        else if (v >= 3) s = 2;
+        scaled[k] = s;
+      }
+      return { totals, scaled };
+    }
+
+    function profileScore(profile, userScaled){
+      // Higher score = closer match. Perfect match gives max points.
+      // Each category:
+      // diff 0 => +3, diff 1 => +2, diff 2+ => +1
+      let score = 0;
+      const keys = Object.keys(profile.ideal);
+      for (const k of keys){
+        const diff = Math.abs(profile.ideal[k] - userScaled[k]);
+        if (diff === 0) score += 3;
+        else if (diff === 1) score += 2;
+        else score += 1;
+      }
+      return score;
+    }
+
+    function levelLabel(k, n){
+      const names = {
+        energy: ["Low energy", "Medium energy", "High energy"],
+        space: ["Small space ok", "Medium space", "Needs more space"],
+        time: ["Low time needs", "Moderate time", "High time needs"],
+        train: ["Beginner-friendly", "Moderate training", "Needs training"],
+        groom: ["Low grooming", "Moderate grooming", "High grooming"],
+        gentle: ["Independent", "Balanced", "Very gentle"],
+        social: ["Cautious", "Moderate social", "Very social"]
+      };
+      return names[k][Math.max(0, Math.min(2, n-1))];
+    }
+
+    function renderResults(){
+      userScores = computeUserScores();
+
+      const scored = dogProfiles.map(p => ({
+        ...p,
+        matchScore: profileScore(p, userScores.scaled)
+      })).sort((a,b)=> b.matchScore - a.matchScore);
+
+      // If the user selected a size preference, strictly prefer profiles matching that size.
+      // We consider profile.ideal.space: 1=small,2=medium,3=large.
+      let filtered = scored;
+      const sizeQIndex = quiz.findIndex(q => q.id === 'size');
+      if (sizeQIndex !== -1){
+        const sizeAnswer = answers[sizeQIndex];
+        if (sizeAnswer !== null && sizeAnswer !== undefined){
+          // Map answer index -> desired space values
+          const ansToSpaces = {
+            0: [1], // small
+            1: [2], // medium
+            2: [3], // large
+            3: [1,2,3] // no preference
+          };
+          const desired = ansToSpaces[sizeAnswer] || [1,2,3];
+          const matches = scored.filter(p => desired.includes(p.ideal.space));
+          if (matches.length) filtered = matches;
+        }
+      }
+
+      // Filter by shedding preference (non-negotiable)
+      // Shedding levels: 1=high, 2=moderate, 3=low/no-shed
+      const sheddingQIndex = quiz.findIndex(q => q.id === 'shedding');
+      if (sheddingQIndex !== -1){
+        const sheddingAnswer = answers[sheddingQIndex];
+        if (sheddingAnswer !== null && sheddingAnswer !== undefined){
+          const ansToShedding = {
+            0: [3], // no shedding - only low/no-shed dogs
+            1: [2, 3], // little shedding - moderate or low
+            2: [1, 2, 3], // fine with shedding - all
+            3: [1, 2, 3] // no preference - all
+          };
+          const desired = ansToShedding[sheddingAnswer] || [1,2,3];
+          const matches = filtered.filter(p => desired.includes(p.shedding));
+          if (matches.length) filtered = matches;
+        }
+      }
+
+      // Keep the (possibly filtered) scored list for showing available dogs that match
+      lastScored = filtered;
+
+      const top = filtered[0];
+      const runnerUps = filtered.slice(1,3);
+
+      statusChip.textContent = "Match ready ✅";
+
+      // Create match “traits” pills based on user scale
+      const traitPills = [
+        { k:"energy", val: top.ideal.energy },
+        { k:"space", val: top.ideal.space },
+        { k:"train", val: top.ideal.train },
+        { k:"groom", val: top.ideal.groom },
+      ].map(t => `<div class="pill">${levelLabel(t.k, t.val)}</div>`).join("");
+
+      // Build a clean search query from the profile name for a representative image
+      const cleanName = top.name.replace(/\s*\(.*?\)/, '').replace(/[^a-zA-Z0-9 ]/g, '').trim();
+      const topImage = customBreedImages[top.key] || `https://source.unsplash.com/800x600/?${encodeURIComponent(cleanName)}`;
+
+      resultArea.innerHTML = `
+        <div class="matchHeading">YOU HAVE MATCHED WITH THE ${top.name.toUpperCase()}!</div>
+        <img class="matchImage" src="${topImage}" alt="${top.name}" onerror="this.src='https://source.unsplash.com/800x600/?dog'" style="margin:0 auto 32px; display:block;">
+        <div class="resultHero" style="align-items:center; gap:18px; flex-direction:column; text-align:center;">
+          <div>
+            <p style="margin:6px 0 8px;font-size:18px;">${top.description}</p>
+            <div class="pillRow">${traitPills}</div>
+          </div>
+        </div>
+
+        <div class="miniList" style="margin-top:14px;">
+          <div class="miniItem">
+            <div>
+              <h4 style="font-size:22px;margin:0;">Why this match works</h4>
+              <p style="font-size:17px;">${top.tags.join(" • ")}</p>
+              <p style="margin-top:6px;font-size:17px;">Tips: ${top.tips.join(" • ")}</p>
+            </div>
+            <div class="miniRight" style="align-items:flex-start;">
+              <span class="scoreTag" style="font-size:20px;">Match score: <b>${Math.round((top.matchScore / 21) * 100)}%</b></span>
+              <span style="color:rgba(238,242,255,0.7);">Top pick</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sectionTitle" style="margin-top:14px;">
+          <h2 style="font-size:22px; margin:0;">Runner-ups</h2>
+          <span class="chip">Also good fits</span>
+        </div>
+
+        <div class="miniList">
+          ${runnerUps.map(p => {
+            const runnerImage = customBreedImages[p.key] || `https://source.unsplash.com/800x600/?${encodeURIComponent(p.name)}`;
+            return `
+            <div class="miniItem" style="gap:14px;">
+              <img src="${runnerImage}" alt="${p.name}" style="width:120px; height:100px; object-fit:cover; border-radius:10px; flex-shrink:0;" onerror="this.src='https://source.unsplash.com/800x600/?dog'">
+              <div>
+                <h4 style="font-size:17px;">${p.icon} ${p.name}</h4>
+                <p style="font-size:15px;">${p.tags.join(" • ")}</p>
+              </div>
+              <div class="miniRight">
+                <span class="scoreTag" style="font-size:15px;">Score: <b>${Math.round((p.matchScore / 21) * 100)}%</b></span>
+              </div>
+            </div>
+          `}).join("")}
+        </div>
+
+        <p class="footerNote" style="margin-top:12px;">
+          If you want, take your result and tell a shelter staff member. They can suggest real dogs with similar needs and temperament.
+        </p>
+      `;
+
+      progressText.textContent = `${quiz.length} / ${quiz.length}`;
+      progressFill.style.width = `100%`;
+
+      // Update shelters area to include any available dogs matching this result
+      renderShelters();
+
+      // Scroll the user to the match section so they see the heading and match
+      setTimeout(() => {
+        const target = document.getElementById('matchCard');
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 200);
+    }
+
+    // ---------------------------
+    // 8) SHELTERS (DISTANCE SORT)
+    // ---------------------------
+    function haversineKm(lat1, lon1, lat2, lon2){
+      const R = 6371;
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLon = (lon2 - lon1) * Math.PI / 180;
+      const a =
+        Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.cos(lat1 * Math.PI/180) * Math.cos(lat2 * Math.PI/180) *
+        Math.sin(dLon/2) * Math.sin(dLon/2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      return R * c;
+    }
+
+    function renderShelters(){
+      let list = shelters.map(s => ({...s}));
+
+      if (userLocation){
+        list.forEach(s => {
+          s.km = haversineKm(userLocation.lat, userLocation.lon, s.lat, s.lon);
+        });
+        list.sort((a,b)=> (a.km ?? 9999) - (b.km ?? 9999));
+      }
+
+      // Build recommended available dogs section if we have a scored result
+      let recommendedHtml = "";
+      if (lastScored){
+        const keys = [lastScored[0].key, ...(lastScored[1] ? [lastScored[1].key] : [])];
+        const matches = availableDogs.filter(d => keys.includes(d.breedKey));
+        if (matches.length){
+          recommendedHtml += `
+            <div class="sectionTitle">
+              <h2>Available dogs matching your result</h2>
+              <span class="chip">From local shelters</span>
+            </div>
+          `;
+
+          recommendedHtml += matches.map(d => {
+            const s = shelters[d.shelterIdx] || { name: "Unknown", lat:null, lon:null, phone: "" };
+            const km = (userLocation && s.lat != null) ? haversineKm(userLocation.lat, userLocation.lon, s.lat, s.lon).toFixed(1) : null;
+            const phoneLink = s.phone ? `tel:${s.phone.replace(/[^0-9+]/g,'')}` : '#';
+
+            return `
+              <div class="miniItem">
+                <div style="display:flex; gap:12px; align-items:center;">
+                  <img src="${d.img}" alt="${d.name}" style="width:96px; height:64px; object-fit:cover; border-radius:8px;" />
+                  <div>
+                    <h4>${d.name} — ${d.breedLabel || d.breedKey}</h4>
+                    <p>${d.age} • Shelter: ${s.name}</p>
+                    ${km ? `<p style="margin-top:6px;">Approx distance: <b>${km} km</b></p>` : ''}
+                  </div>
+                </div>
+                <div class="miniRight">
+                  <a class="link" href="${phoneLink}">${s.phone ? 'Call shelter' : 'Contact'}</a>
+                  <a class="link" href="https://www.google.com/maps/search/?api=1&query=${s.lat},${s.lon}" target="_blank" style="display:block;margin-top:8px">View on map</a>
+                </div>
+              </div>
+            `;
+          }).join("");
+        }
+      }
+
+      const sheltersHtml = list.map(s => `
+        <div class="miniItem">
+          <div>
+            <h4>🏠 ${s.name}</h4>
+            <p>Area: ${s.city} • Phone: ${s.phone}</p>
+            ${userLocation && s.km != null ? `<p style="margin-top:6px;">Approx distance: <b>${s.km.toFixed(1)} km</b></p>` : ""}
+          </div>
+          <div class="miniRight">
+            <span class="scoreTag">${userLocation ? "Sorted" : ""}</span>
+          </div>
+        </div>
+      `).join("");
+
+      shelterList.innerHTML = recommendedHtml + sheltersHtml;
+    }
+
+    async function useMyLocation(){
+      if (!navigator.geolocation){
+        showToast("Geolocation not supported in this browser.");
+        return;
+      }
+      showToast("Requesting location…");
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          userLocation = { lat: pos.coords.latitude, lon: pos.coords.longitude };
+          renderShelters();
+          showToast("Shelters sorted by nearest.");
+        },
+        () => {
+          showToast("Location permission denied.");
+        },
+        { enableHighAccuracy: true, timeout: 8000 }
+      );
+    }
+
+    function openShelterSearch(){
+      const place = placeInput.value.trim();
+      if (!place){
+        showToast("Type a city or postal/zip first.");
+        return;
+      }
+
+      // This opens Petfinder search in a new tab.
+      // You can replace with a local shelter website if your teacher prefers.
+      const url = `https://www.petfinder.com/search/dogs-for-adoption/?location=${encodeURIComponent(place)}`;
+
+      window.open(url, "_blank", "noopener,noreferrer");
+      showToast("Opened adoption search in a new tab.");
+    }
+
+    // ---------------------------
+    // 9) BUTTONS / NAV
+    // ---------------------------
+    backBtn.addEventListener("click", () => {
+      if (step > 0){
+        step--;
+        renderQuestion();
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (answers[step] === null) return;
+
+      if (step < quiz.length - 1){
+        step++;
+        renderQuestion();
+      } else {
+        // Finished quiz
+        renderResults();
+      }
+    });
+
+    restartBtn.addEventListener("click", () => {
+      step = 0;
+      for (let i = 0; i < answers.length; i++) answers[i] = null;
+      userScores = null;
+      statusChip.textContent = "Complete the quiz";
+      resultArea.innerHTML = `
+        <div class="resultHero">
+          <div class="badge" aria-hidden="true">✨</div>
+          <div>
+            <h3>Ready when you are</h3>
+            <p>
+              Answer the questions on the left. When you finish, you’ll get a best match plus runner-ups.
+            </p>
+            <div class="pillRow">
+              <div class="pill">Energy</div>
+              <div class="pill">Space</div>
+              <div class="pill">Training</div>
+              <div class="pill">Grooming</div>
+            </div>
+          </div>
+        </div>
+      `;
+      renderQuestion();
+      showToast("Restarted the quiz.");
+    });
+
+    locBtn.addEventListener("click", useMyLocation);
+    searchSheltersBtn.addEventListener("click", openShelterSearch);
+
+    // ---------------------------
+    // 10) INIT
+    // ---------------------------
+    renderQuestion();
+    renderShelters();
+  </script>
+</body>
+</html>

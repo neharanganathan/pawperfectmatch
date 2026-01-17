@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dog Breeds — Pawperfect Match</title>
+  <style>
+    :root{ --primary:#7c3aed; --secondary:#f59e0b; --text:#111827; --text-light:rgba(17,24,39,0.75); --bg-light:#fff9db; --radius:16px; }
+    * { transition: color 200ms ease, background 200ms ease; }
+    body{ margin:0; font-family:'Segoe UI',Roboto,system-ui,sans-serif; background: linear-gradient(135deg, #fff9db 0%, #ffe4f0 100%); color:var(--text); min-height:100vh; }
+    header{ padding:24px 18px; border-bottom:2px solid rgba(124,58,237,0.1); background:rgba(255,255,255,0.6); backdrop-filter:blur(10px); }
+    .topbar{ display:flex; justify-content:space-between; align-items:center; gap:12px; max-width:1100px; margin:0 auto; }
+    .topbar h1{ margin:0; font-size:clamp(24px,5vw,32px); background:linear-gradient(135deg,var(--primary),var(--secondary)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .navLinks{ display:flex; gap:18px; align-items:center; }
+    .navLinks a{ color:var(--primary); text-decoration:none; font-weight:600; font-size:15px; padding:8px 12px; border-radius:8px; transition:all 200ms ease; }
+    .navLinks a:hover{ background:rgba(124,58,237,0.1); transform:translateY(-2px); }
+    .wrap{ max-width:1100px; margin:48px auto; padding:20px; }
+    .heroSection{ text-align:center; margin-bottom:56px; animation:slideDown 600ms ease; }
+    .heroSection h1{ font-size:clamp(32px,7vw,48px); margin:0 0 12px 0; background:linear-gradient(135deg,var(--primary),var(--secondary)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-weight:800; }
+    .heroSection p{ font-size:18px; color:var(--text-light); max-width:700px; margin:0 auto; line-height:1.6; }
+    .breedsGrid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:24px; margin-top:32px; }
+    .breedCard{ background:rgba(255,255,255,0.8); backdrop-filter:blur(20px); border-radius:var(--radius); border:2px solid rgba(124,58,237,0.15); overflow:hidden; cursor:pointer; transition:all 300ms ease; }
+    .breedCard:hover{ transform:translateY(-8px); border-color:var(--primary); box-shadow:0 40px 80px rgba(124,58,237,0.15); }
+    .breedImage{ width:100%; height:200px; object-fit:cover; }
+    .breedInfo{ padding:20px; }
+    .breedName{ font-size:20px; font-weight:800; color:var(--primary); margin:0 0 8px 0; }
+    .breedShedding{ display:inline-block; font-size:13px; font-weight:600; color:var(--secondary); background:rgba(245,158,11,0.1); padding:4px 8px; border-radius:6px; margin-bottom:12px; }
+    .breedTraits{ font-size:14px; color:var(--text-light); line-height:1.6; }
+    .shedLevel{ margin-top:12px; font-size:14px; color:var(--text-light); }
+    .shedBars{ display:flex; gap:4px; margin-top:6px; }
+    .shedBar{ width:20px; height:6px; background:rgba(124,58,237,0.2); border-radius:3px; }
+    .shedBar.filled{ background:var(--secondary); }
+    .modal{ display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center; animation:fadeIn 200ms ease; }
+    .modal.active{ display:flex; }
+    .modalContent{ background:white; border-radius:var(--radius); padding:32px; max-width:600px; max-height:90vh; overflow-y:auto; animation:slideUp 300ms ease; }
+    .closeBtn{ float:right; font-size:28px; font-weight:bold; color:var(--text-light); cursor:pointer; border:none; background:none; transition:all 200ms ease; }
+    .closeBtn:hover{ color:var(--primary); transform:scale(1.2); }
+    .modalImg{ width:100%; height:300px; object-fit:cover; border-radius:var(--radius); margin-bottom:20px; }
+    .modalTitle{ font-size:32px; font-weight:800; background:linear-gradient(135deg,var(--primary),var(--secondary)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin:0 0 12px 0; }
+    .modalShedding{ display:inline-block; font-size:14px; font-weight:600; color:var(--secondary); background:rgba(245,158,11,0.1); padding:6px 12px; border-radius:8px; margin-bottom:16px; }
+    .modalSection{ margin-top:20px; }
+    .modalSection h4{ font-size:16px; color:var(--primary); font-weight:700; margin:0 0 8px 0; }
+    .modalSection ul{ margin:0; padding-left:20px; color:var(--text-light); line-height:1.8; }
+    .modalSection li{ margin-bottom:6px; }
+    @keyframes fadeIn{ from{ opacity:0; } to{ opacity:1; } }
+    @keyframes slideUp{ from{ opacity:0; transform:translateY(30px); } to{ opacity:1; transform:translateY(0); } }
+    @keyframes slideDown{ from{ opacity:0; transform:translateY(-20px); } to{ opacity:1; transform:translateY(0); } }
+    @media (max-width:920px){ .breedsGrid{ grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <h1>Pawperfect Match</h1>
+      <div class="navLinks" style="margin-left:auto;">
+        <a href="index.html">Home</a>
+        <a href="index.html#quiz">Quiz</a>
+        <a href="breeds.html">Breeds</a>
+        <a href="resources.html">Resources</a>
+        <a href="about.html">About Us</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="heroSection">
+      <h1>Explore All Breeds</h1>
+      <p>Discover detailed information about all 26 dog breeds in our matching system. Click any breed to learn more!</p>
+    </div>
+
+    <div class="breedsGrid" id="breedsGrid"></div>
+  </div>
+
+  <div class="modal" id="breedModal">
+    <div class="modalContent">
+      <button class="closeBtn" onclick="closeModal()">&times;</button>
+      <img id="modalImg" class="modalImg" src="" alt="">
+      <h2 class="modalTitle" id="modalName"></h2>
+      <div class="modalShedding" id="modalShedding"></div>
+      
+      <div class="modalSection">
+        <h4>Ideal Traits</h4>
+        <ul id="modalTraits"></ul>
+      </div>
+
+      <div class="modalSection">
+        <h4>Training Tips</h4>
+        <ul id="modalTips"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const dogs = [
+      { name: 'Golden Retriever', shedding: 4, img: 'https://www.thesprucepets.com/thmb/kCP2nrYde0lxY1vKcyDoWTQnZ54=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/27579211_1592220587499910_4895961142016344064_n-5b353a8dc9e77c003795239d.jpg', traits: ['High energy', 'Very social', 'Loves water', 'Great with kids'], tips: ['Requires 2+ hours exercise daily', 'Loves fetch and swimming', 'Early socialization important', 'Friendly with other dogs'] },
+      { name: 'Labrador Retriever', shedding: 4, img: 'https://www.dailypaws.com/thmb/rwL54b2y1kllOZLhfppcfbkrmaU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/golden-lab-puppy-664540826-2000-b29bcc58c71a498eb5ecd5d0b2b8e82b.jpg', traits: ['High energy', 'Playful', 'Obedient', 'Intelligent'], tips: ['Excellent family dog', 'Loves outdoor activities', 'Requires consistent training', 'Great service dog potential'] },
+      { name: 'French Bulldog', shedding: 2, img: 'https://media.cnn.com/api/v1/images/stellar/prod/230315104543-02-french-bulldog-stock.jpg?c=16x9&q=h_653,w_1160,c_fill/f_avif', traits: ['Low energy', 'Playful', 'Affectionate', 'Apartment-friendly'], tips: ['Sensitive to heat', 'Regular vet checkups needed', 'Enjoy short walks', 'Great for city living'] },
+      { name: 'Bulldog', shedding: 3, img: 'https://i1.pickpik.com/photos/94/974/364/bulldog-cute-easter-animal-preview.jpg', traits: ['Low-medium energy', 'Calm', 'Loyal', 'Good with kids'], tips: ['Need climate control', 'Breathing issues common', 'Regular grooming important', 'Stubborn but lovable'] },
+      { name: 'German Shepherd', shedding: 4, img: 'https://newapproach.ca/wp-content/uploads/2021/09/shepherd-dog-puppy-dog-4357790-1024x685.jpg', traits: ['High intelligence', 'Loyal', 'Protective', 'High energy'], tips: ['Needs mental stimulation', 'Excellent for training', 'Strong exercise requirements', 'Early socialization crucial'] },
+      { name: 'Shih Tzu', shedding: 2, img: 'https://www.animalkingdomaz.com/wp-content/uploads/Shih-Tzu-2-300x300.jpg', traits: ['Low energy', 'Affectionate', 'Friendly', 'Social'], tips: ['Daily grooming required', 'Great for apartments', 'Can be stubborn in training', 'Loves human companionship'] },
+      { name: 'Poodle', shedding: 1, img: 'https://thehappypuppysite.com/wp-content/uploads/2018/01/Toy-Poodle-HP-long.jpg', traits: ['Highly intelligent', 'Active', 'Hypoallergenic', 'Elegant'], tips: ['Regular professional grooming', 'Needs lots of exercise', 'Excellent for training', 'Great with families'] },
+      { name: 'Dachshund', shedding: 2, img: 'https://pethelpful.com/.image/w_1080,q_auto:good,c_limit/NDowMDAwMDAwMDAwMTI0NzA3/cute-dachshund-puppies.jpg?arena_f_auto', traits: ['Curious', 'Determined', 'Playful', 'Small but bold'], tips: ['Watch back health', 'Prone to weight gain', 'Love to hunt/dig', 'Can be stubborn'] },
+      { name: 'Beagle', shedding: 3, img: 'https://dogtime.com/wp-content/uploads/sites/12/2023/07/GettyImages-936521948-e1690235595257.jpg?w=1024', traits: ['Curious', 'Energetic', 'Pack dogs', 'Determined nose'], tips: ['Need secure fencing', 'Love to track scents', 'Pack mentality', 'Require active owners'] },
+      { name: 'Yorkshire Terrier', shedding: 1, img: 'https://a-z-animals.com/media/2022/05/yorkie2.jpg', traits: ['Confident', 'Small but spirited', 'Affectionate', 'Hypoallergenic'], tips: ['Daily coat maintenance', 'Can be feisty', 'Great for apartments', 'Vulnerable to injury'] },
+      { name: 'Pomeranian', shedding: 3, img: 'https://www.rover.com/blog/wp-content/uploads/iStock-1422682177-1024x683.jpg', traits: ['Confident', 'Alert', 'Playful', 'Vocal'], tips: ['Can be noisy', 'Require grooming', 'Need socialization', 'Good apartment dogs'] },
+      { name: 'Siberian Husky', shedding: 5, img: 'https://t4.ftcdn.net/jpg/06/27/80/93/360_F_627809340_QUwyhZUUSBuVoiSpRjLGOuFSguJQ1CdY.jpg', traits: ['High energy', 'Playful', 'Pack minded', 'Escape artists'], tips: ['Extreme exercise needs', 'Heavy shedding', 'Love the cold', 'Need experienced owners'] },
+      { name: 'Rottweiler', shedding: 3, img: 'https://animalfair.com/wp-content/uploads/2016/07/Screen-Shot-2016-07-18-at-12.34.21-PM.png', traits: ['Loyal', 'Confident', 'Strong', 'Protective'], tips: ['Require firm training', 'Early socialization vital', 'Excellent guard dogs', 'Very food motivated'] },
+      { name: 'Chihuahua', shedding: 2, img: 'chihuahua.jpg', traits: ['Tiny', 'Confident', 'Loyal', 'Alert'], tips: ['Fragile - watch handling', 'Can be aggressive', 'Prone to health issues', 'Need warm environments'] },
+      { name: 'Boxer', shedding: 3, img: 'https://s.yimg.com/ny/api/res/1.2/b_bHBLXvluXN1_3mXdXqBw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNg--/https://media.zenfs.com/en/dog_time_927/40d21c1f8b20923ed065d4e09da82d2c', traits: ['Playful', 'Energetic', 'Loyal', 'Intelligent'], tips: ['Need lots of exercise', 'Prone to jumping', 'Excellent with kids', 'Smart and trainable'] },
+      { name: 'Cavalier King Charles Spaniel', shedding: 3, img: 'https://pethelpful.com/.image/w_1080,q_auto:good,c_limit/MTk0OTAxODYyMDkxNDY1ODkw/5-things-you-should-know-before-owning-a-cavalier-king-charles-spaniel.jpg?arena_f_auto', traits: ['Gentle', 'Eager to please', 'Medium energy', 'Affectionate'], tips: ['Regular ear cleaning important', 'Need moderate exercise', 'Love water and retrieving', 'Great family dogs'] },
+      { name: 'Great Dane', shedding: 3, img: 'https://www.scotsman.com/webimg/b25lY21zOjZlZTMwMGRkLWNiZDItNGVkMy05YTEzLTNiNTQ3NDYyMjQ1ZDphYjNhOTI5NC0zZGNmLTRmN2MtOWNkYy0zMGMzMjMzZDlmZTA=.jpg?crop=3:2,smart&trim=&width=990&quality=65&enable=upscale', traits: ['Gentle giant', 'Calm', 'Affectionate', 'Good with families'], tips: ['Watch for joint issues', 'Need space but lazy', 'Surprisingly good apartment dogs', 'Limited lifespan'] },
+      { name: 'Maltese', shedding: 1, img: 'https://images.ctfassets.net/5gwznsevsdag/26aZgpxRz5JQmHkMn8W3vl/95e9eae3ab1b3aca41efce1f645c0dd0/BLOG_BREED_IMAGES_MALTESE_1255b1c5-b936-4700-97de-048fc8e2fb78.jpg?fm=avif&q=40&w=750&h=750&fit=fill', traits: ['Affectionate', 'Playful', 'Hypoallergenic', 'Gentle'], tips: ['Daily coat grooming needed', 'Sensitive to cold', 'Great for apartments', 'Prone to eye staining'] },
+      { name: 'Dalmatian', shedding: 4, img: 'https://www.scotsman.com/webimg/b25lY21zOjZlZTMwMGRkLWNiZDItNGVkMy05YTEzLTNiNTQ3NDYyMjQ1ZDphYjNhOTI5NC0zZGNmLTRmN2MtOWNkYy0zMGMzMjMzZDlmZTA=.jpg?crop=3:2,smart&trim=&width=990&quality=65&enable=upscale', traits: ['Energetic', 'Playful', 'Unique spotted coat', 'Active'], tips: ['High exercise needs', 'Prone to hearing loss', 'Need experienced owners', 'Love running long distances'] },
+      { name: 'Corgi', shedding: 4, img: 'https://www.rover.com/blog/wp-content/uploads/iStock-1422682177-1024x683.jpg', traits: ['Intelligent', 'Alert', 'Affectionate', 'Short-legged'], tips: ['Watch back health', 'Prone to weight gain', 'Excellent herders', 'Love to be involved'] },
+      { name: 'Australian Shepherd', shedding: 4, img: 'https://pethelpful.com/.image/w_1080,q_auto:good,c_limit/MjAwODIwNTQwNjk5OTc2OTA4/australian-shepherd-guide.jpg?arena_f_auto', traits: ['Intelligent', 'Energetic', 'Herding drive', 'Loyal'], tips: ['Need extensive exercise', 'Mental stimulation important', 'Excellent agility dogs', 'Can be reserved with strangers'] },
+      { name: 'Bichon Frise', shedding: 1, img: 'https://www.dogster.com/wp-content/uploads/2024/09/Adorable-perro-Bichon-Frise_Eudyptula_Shutterstock.jpg.webp', traits: ['Cheerful', 'Hypoallergenic', 'Playful', 'Small'], tips: ['Regular grooming crucial', 'Great for apartments', 'Prone to separation anxiety', 'Very social dogs'] },
+      { name: 'Miniature Pinscher', shedding: 2, img: 'https://www.akc.org/wp-content/uploads/2017/11/Miniature-Pinscher-leaping-through-a-meadow.jpg', traits: ['Energetic', 'Confident', 'Alert', 'Tiny'], tips: ['High prey drive', 'Can be aggressive to other dogs', 'Need firm training', 'Love to jump and climb'] },
+      { name: 'Schnauzer', shedding: 1, img: 'https://bowwowinsurance.com.au/wp-content/uploads/2018/10/shutterstock_1836759934_crop-ed-Dog-laying-on-pier-of-river-green-background.-Mini-schnauzer-pup-salt-and-pepper.jpg', traits: ['Alert', 'Intelligent', 'Loyal', 'Wiry coat'], tips: ['Regular hand-stripping needed', 'Excellent watchdogs', 'Good with families', 'Can be stubborn'] },
+      { name: 'Pug', shedding: 3, img: 'https://cdn05.zipify.com/YbsM3chL8S78YP9YMpIiYAvmiNA=/fit-in/3840x0/020853f9b4d74310a51e3174c8e3db45/pot013-blog-hero-horizontal-1.jpeg', traits: ['Affectionate', 'Playful', 'Compact', 'Charming'], tips: ['Heat sensitive', 'Breathing issues common', 'Prone to weight gain', 'Love human companionship'] },
+      { name: 'Saint Bernard', shedding: 4, img: 'https://www.animalfunfacts.net/images/stories/pets/dogs/saint_bernard_garden_l.jpg', traits: ['Gentle', 'Patient', 'Large', 'Loyal'], tips: ['Massive shedding', 'Need cool environments', 'Excellent rescue dogs', 'Prone to hip dysplasia'] }
+    ];
+
+    const customBreedImages = {
+      shihtzu: 'https://www.animalkingdomaz.com/wp-content/uploads/Shih-Tzu-2-300x300.jpg',
+      yorkie: 'https://a-z-animals.com/media/2022/05/yorkie2.jpg'
+    };
+
+    function createBreedCards() {
+      const grid = document.getElementById('breedsGrid');
+      dogs.forEach(dog => {
+        const card = document.createElement('div');
+        card.className = 'breedCard';
+        const shedBarsFilled = Array(dog.shedding).fill(0).map(() => '<div class="shedBar filled"></div>').join('');
+        const shedBarsEmpty = Array(5 - dog.shedding).fill(0).map(() => '<div class="shedBar"></div>').join('');
+        
+        card.innerHTML = `
+          <img src="${dog.img}" alt="${dog.name}" class="breedImage">
+          <div class="breedInfo">
+            <h3 class="breedName">${dog.name}</h3>
+            <div class="breedShedding">Shedding: ${dog.shedding}/5</div>
+            <div class="shedBars">${shedBarsFilled}${shedBarsEmpty}</div>
+            <p class="breedTraits">${dog.traits.join(' • ')}</p>
+          </div>
+        `;
+        
+        card.onclick = () => openModal(dog);
+        grid.appendChild(card);
+      });
+    }
+
+    function openModal(dog) {
+      document.getElementById('modalImg').src = dog.img;
+      document.getElementById('modalName').textContent = dog.name;
+      document.getElementById('modalShedding').textContent = `Shedding Level: ${dog.shedding}/5`;
+      document.getElementById('modalTraits').innerHTML = dog.traits.map(t => `<li>${t}</li>`).join('');
+      document.getElementById('modalTips').innerHTML = dog.tips.map(t => `<li>${t}</li>`).join('');
+      document.getElementById('breedModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('breedModal').classList.remove('active');
+    }
+
+    document.getElementById('breedModal').onclick = (e) => {
+      if (e.target.id === 'breedModal') closeModal();
+    };
+
+    createBreedCards();
+  </script>
+
+</body>
+</html>

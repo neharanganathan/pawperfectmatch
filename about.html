@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About — Pawperfect Match</title>
+  <style>
+    :root{ --primary:#7c3aed; --secondary:#f59e0b; --text:#111827; --text-light:rgba(17,24,39,0.75); --bg-light:#fff9db; --radius:16px; }
+    * { transition: color 200ms ease, background 200ms ease; }
+    body{ margin:0; font-family:'Segoe UI',Roboto,system-ui,sans-serif; background: linear-gradient(135deg, #fff9db 0%, #ffe4f0 100%); color:var(--text); min-height:100vh; }
+    header{ padding:24px 18px; border-bottom:2px solid rgba(124,58,237,0.1); background:rgba(255,255,255,0.6); backdrop-filter:blur(10px); }
+    .topbar{ display:flex; justify-content:space-between; align-items:center; gap:12px; max-width:1100px; margin:0 auto; }
+    .topbar h1{ margin:0; font-size:clamp(24px,5vw,32px); background:linear-gradient(135deg,var(--primary),var(--secondary)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .navLinks{ display:flex; gap:18px; align-items:center; }
+    .navLinks a{ color:var(--primary); text-decoration:none; font-weight:600; font-size:15px; padding:8px 12px; border-radius:8px; transition:all 200ms ease; }
+    .navLinks a:hover{ background:rgba(124,58,237,0.1); transform:translateY(-2px); }
+    .wrap{ max-width:1100px; margin:48px auto; padding:20px; }
+    .heroSection{ text-align:center; margin-bottom:56px; animation:slideDown 600ms ease; }
+    .heroSection h1{ font-size:clamp(32px,7vw,48px); margin:0 0 12px 0; background:linear-gradient(135deg,var(--primary),var(--secondary)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-weight:800; }
+    .heroSection p{ font-size:18px; color:var(--text-light); max-width:600px; margin:0 auto; line-height:1.6; }
+    .mainCard{ background:rgba(255,255,255,0.8); backdrop-filter:blur(20px); padding:48px; border-radius:var(--radius); border:2px solid rgba(124,58,237,0.15); box-shadow:0 20px 60px rgba(0,0,0,0.08); display:flex; gap:48px; align-items:center; margin-bottom:48px; }
+    .mainCard > div:first-child { flex:1; }
+    .mainCard h2{ font-size:36px; margin:0 0 24px 0; color:var(--primary); font-weight:800; }
+    .mainCard p{ font-size:16px; line-height:1.8; margin:0 0 18px 0; color:var(--text-light); }
+    .mainCard p:last-child{ margin-bottom:0; }
+    .aboutImage{ flex:0 0 420px; }
+    .aboutImage img{ width:100%; height:auto; border-radius:20px; border:3px solid var(--primary); object-fit:cover; box-shadow:0 30px 80px rgba(124,58,237,0.25); transition:all 300ms ease; }
+    .aboutImage img:hover{ transform:scale(1.03) translateY(-8px); box-shadow:0 40px 100px rgba(124,58,237,0.35); }
+    .valuesSection{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:28px; margin:56px 0; }
+    .valueCard{ background:linear-gradient(135deg,rgba(124,58,237,0.1),rgba(245,158,11,0.1)); padding:32px; border-radius:var(--radius); border:2px solid rgba(124,58,237,0.2); text-align:center; transition:all 300ms ease; cursor:pointer; }
+    .valueCard:hover{ transform:translateY(-8px); border-color:var(--primary); box-shadow:0 20px 50px rgba(124,58,237,0.15); background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(245,158,11,0.15)); }
+    .valueCard h3{ font-size:24px; margin:0 0 12px 0; color:var(--primary); }
+    .valueCard p{ margin:0; color:var(--text-light); font-size:15px; line-height:1.6; }
+    @keyframes slideDown{ from{ opacity:0; transform:translateY(-20px); } to{ opacity:1; transform:translateY(0); } }
+    @media (max-width:920px){ .mainCard{ flex-direction:column; gap:32px; padding:32px; } .aboutImage{ flex:0 0 auto; } .topbar{ flex-direction:column; gap:18px; text-align:center; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <h1>Pawperfect Match</h1>
+      <div class="navLinks" style="margin-left:auto;">
+        <a href="index.html">Home</a>
+        <a href="index.html#quiz">Quiz</a>
+        <a href="breeds.html">Breeds</a>
+        <a href="resources.html">Resources</a>
+        <a href="about.html">About Us</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap" style="margin-top:18px;">
+
+    <div class="heroSection">
+      <h1>About Pawperfect Match</h1>
+      <p>Helping people find their perfect dog companion through thoughtful matching and responsible adoption</p>
+    </div>
+
+    <div class="mainCard">
+      <div>
+        <h2>Our Mission</h2>
+        <p>
+          Pawperfect Match was created to help people make informed and responsible decisions when choosing a dog. Every dog has unique needs, and finding the right match is about more than appearance. It depends on lifestyle, time commitment, energy level, and living environment.
+        </p>
+
+        <p>
+          Our goal is to guide users through a simple and interactive quiz that considers daily routines, personal preferences, and home situations. Using these factors, Pawperfect Match recommends dog types that are more likely to thrive in a user’s care. By focusing on compatibility, the platform encourages healthier and longer lasting relationships between dogs and their owners.
+        </p>
+
+        <p>
+          Pawperfect Match also promotes responsible pet ownership and adoption. The website connects users with nearby animal shelters and adoption resources to support dogs in need of safe and loving homes.
+        </p>
+      </div>
+
+      <div class="aboutImage">
+        <img src="aboutus.jpg" alt="About Pawperfect Match" />
+      </div>
+    </div>
+
+    <div class="valuesSection">
+      <div class="valueCard">
+        <h3>🐕 Dog-Centric</h3>
+        <p>Every recommendation is based on what's best for the dog, ensuring happy, healthy matches.</p>
+      </div>
+      <div class="valueCard">
+        <h3>💡 Informed Choices</h3>
+        <p>We guide first-time owners and experienced dog lovers to make thoughtful decisions.</p>
+      </div>
+      <div class="valueCard">
+        <h3>🏠 Compatibility</h3>
+        <p>Find a dog that fits your lifestyle, home, and commitment level perfectly.</p>
+      </div>
+      <div class="valueCard">
+        <h3>❤️ Adoption Support</h3>
+        <p>We connect users with shelters and adoption resources in their area.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

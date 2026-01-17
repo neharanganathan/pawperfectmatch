@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Resources — Pawperfect Match</title>
+  <style>
+    :root{ --primary:#7c3aed; --secondary:#f59e0b; --text:#111827; --text-light:rgba(17,24,39,0.75); --bg-light:#fff9db; --radius:16px; }
+    * { transition: color 200ms ease, background 200ms ease; }
+    body{ margin:0; font-family:'Segoe UI',Roboto,system-ui,sans-serif; background: linear-gradient(135deg, #fff9db 0%, #ffe4f0 100%); color:var(--text); min-height:100vh; }
+    header{ padding:24px 18px; border-bottom:2px solid rgba(124,58,237,0.1); background:rgba(255,255,255,0.6); backdrop-filter:blur(10px); }
+    .topbar{ display:flex; justify-content:space-between; align-items:center; gap:12px; max-width:1100px; margin:0 auto; }
+    .topbar h1{ margin:0; font-size:clamp(24px,5vw,32px); background:linear-gradient(135deg,var(--primary),var(--secondary)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .navLinks{ display:flex; gap:18px; align-items:center; }
+    .navLinks a{ color:var(--primary); text-decoration:none; font-weight:600; font-size:15px; padding:8px 12px; border-radius:8px; transition:all 200ms ease; }
+    .navLinks a:hover{ background:rgba(124,58,237,0.1); transform:translateY(-2px); }
+    .wrap{ max-width:1100px; margin:48px auto; padding:20px; }
+    .heroSection{ text-align:center; margin-bottom:56px; animation:slideDown 600ms ease; }
+    .heroSection h1{ font-size:clamp(32px,7vw,48px); margin:0 0 12px 0; background:linear-gradient(135deg,var(--primary),var(--secondary)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-weight:800; }
+    .heroSection p{ font-size:18px; color:var(--text-light); max-width:700px; margin:0 auto; line-height:1.6; }
+    .guidesContainer{ margin-top:32px; }
+    .guidesGrid{ display:flex; flex-direction:column; gap:28px; }
+    .guideCard{ background:rgba(255,255,255,0.8); backdrop-filter:blur(20px); padding:32px; border-radius:var(--radius); border:2px solid rgba(124,58,237,0.15); box-shadow:0 20px 60px rgba(0,0,0,0.08); transition:all 300ms ease; }
+    .guideCard:hover{ transform:translateY(-8px); border-color:var(--primary); box-shadow:0 40px 80px rgba(124,58,237,0.15); }
+    .guideCard h3{ font-size:24px; margin:0 0 16px 0; color:var(--primary); font-weight:800; }
+    .guideCard p{ margin:0 0 12px 0; color:var(--text-light); line-height:1.7; font-size:15px; }
+    .guideCard p:last-child{ margin-bottom:0; }
+    .guideCard ul{ margin:12px 0 12px 20px; padding:0; color:var(--text-light); }
+    .guideCard li{ margin-bottom:8px; line-height:1.6; }
+    .guideCard h5{ font-size:16px; margin:18px 0 12px 0; color:var(--primary); font-weight:700; }
+    .guideCard strong{ color:var(--text); }
+    .emoji{ font-size:28px; margin-right:10px; }
+    @keyframes slideDown{ from{ opacity:0; transform:translateY(-20px); } to{ opacity:1; transform:translateY(0); } }
+    @media (max-width:920px){ }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <h1>Pawperfect Match</h1>
+      <div class="navLinks" style="margin-left:auto;">
+        <a href="index.html">Home</a>
+        <a href="index.html#quiz">Quiz</a>
+        <a href="breeds.html">Breeds</a>
+        <a href="resources.html">Resources</a>
+        <a href="about.html">About Us</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="heroSection">
+      <h1>Dog Care & Training Guides</h1>
+      <p>Everything you need to know about training, grooming, and caring for your new furry friend</p>
+    </div>
+
+    <div class="guidesContainer">
+      <div class="guidesGrid">
+        <div class="guideCard">
+          <h3><span class="emoji">🎓</span>How to Train Your New Dog</h3>
+          <p><strong>Training is essential</strong> for building a strong, healthy relationship with your dog. Consistent training helps dogs understand expectations, improves safety, and strengthens the bond.</p>
+          
+          <h5>🚽 Potty Training</h5>
+          <p>Teach your dog where and when it's appropriate to go to the bathroom — one of the first important skills.</p>
+          <ul>
+            <li>Take your dog outside frequently, especially after eating, drinking, waking up, or playing</li>
+            <li>Use a consistent potty spot and reward immediately after success</li>
+            <li>Keep a regular feeding and walking schedule</li>
+            <li>Avoid punishment; stay patient and consistent</li>
+          </ul>
+
+          <h5>🏠 Basic Obedience</h5>
+          <strong>Key commands:</strong>
+          <ul>
+            <li><b>Sit</b> – Calm behavior and focus</li>
+            <li><b>Stay</b> – Safety and control</li>
+            <li><b>Come</b> – Recall and safety</li>
+            <li><b>Down</b> – Calmness and control</li>
+          </ul>
+          <p>Keep sessions short (5–10 minutes), use treats, and practice daily.</p>
+        </div>
+
+        <div class="guideCard">
+          <h3><span class="emoji">🐾</span>Fun Tricks & Mental Stimulation</h3>
+          <p>Teaching tricks provides mental stimulation and strengthens your bond with your dog.</p>
+
+          <h5>Beginner Tricks:</h5>
+          <ul>
+            <li><b>Paw (Shake)</b> – Interaction and confidence</li>
+            <li><b>Sit</b> – Often the first trick</li>
+            <li><b>Down</b> – Control and foundation</li>
+          </ul>
+
+          <h5>Intermediate Tricks:</h5>
+          <ul>
+            <li><b>Roll Over</b> – Coordination and focus</li>
+            <li><b>Spin</b> – Body awareness</li>
+            <li><b>High Five</b> – Fun variation</li>
+          </ul>
+
+          <h5>Training Tips:</h5>
+          <ul>
+            <li>Break tricks into small steps</li>
+            <li>Reward all progress</li>
+            <li>End on a positive note</li>
+            <li>Use treats, praise, and affection</li>
+          </ul>
+        </div>
+
+        <div class="guideCard">
+          <h3><span class="emoji">✂️</span>Grooming & Health Care</h3>
+          <p>Grooming is essential for your dog's health and happiness. Establish it as a calm routine.</p>
+
+          <h5>Coat Care:</h5>
+          <ul>
+            <li>Short-coated: Weekly brushing, occasional baths</li>
+            <li>Long/curly: Daily brushing, professional trims</li>
+          </ul>
+
+          <h5>Essential Tasks:</h5>
+          <ul>
+            <li>Check ears weekly</li>
+            <li>Trim nails monthly</li>
+            <li>Brush teeth several times weekly</li>
+            <li>Regular vet checkups</li>
+          </ul>
+
+          <p><strong>Pro tip:</strong> Regular grooming prevents infections and keeps your dog healthy and happy.</p>
+        </div>
+
+        <div class="guideCard">
+          <h3><span class="emoji">🏡</span>Choosing the Right Dog for You</h3>
+          <p>Finding the perfect match means considering your lifestyle carefully.</p>
+
+          <h5>Key Factors:</h5>
+          <ul>
+            <li><b>Energy level</b> – Match dog needs to your lifestyle</li>
+            <li><b>Living space</b> – Apartment vs. house with yard</li>
+            <li><b>Time commitment</b> – Training, walks, attention</li>
+            <li><b>Budget</b> – Food, vet, grooming costs</li>
+            <li><b>Family</b> – Children, other pets, experience</li>
+          </ul>
+
+          <h5>Get Expert Help:</h5>
+          <p>Speak with shelter staff to find the perfect match based on temperament, energy, and needs. They're your best resource!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
